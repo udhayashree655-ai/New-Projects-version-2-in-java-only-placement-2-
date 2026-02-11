@@ -1,0 +1,127 @@
+import java.util.Arrays;
+public class InsertAtStart {
+    public static int[] insertAtStart(int[] arr, int a, int b, int c) {
+        int[] newArr = new int[arr.length + 3];
+        newArr[0] = a;
+        newArr[1] = b;
+        newArr[2] = c;
+        for (int i = 0; i < arr.length; i++) {
+            newArr[i + 3] = arr[i];
+        }
+        return newArr;
+    }
+    public static void main(String[] args) {
+        int[] arr = {4, 5, 6, 7};
+        int a = 1, b = 2, c = 3;
+        int[] result = insertAtStart(arr, a, b, c);
+        System.out.println("New Array: " + Arrays.toString(result));
+    }
+}
+
+Output:
+New Array: [1, 2, 3, 4, 5, 6, 7]
+2)
+  import java.util.Arrays;
+
+public class DeleteSecondIndex {
+
+    public static int[] deleteSecondIndex(int[] arr) {
+        if (arr.length <= 1) {
+            return arr; 
+        }
+
+        int[] newArr = new int[arr.length - 1];
+
+        for (int i = 0, j = 0; i < arr.length; i++) {
+            if (i == 1) {  
+                continue;
+            }
+            newArr[j++] = arr[i];
+        }
+
+        return newArr;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+
+        int[] result = deleteSecondIndex(arr);
+
+        System.out.println("Resultant Array: " + Arrays.toString(result));
+    }
+}
+Output:
+
+Resultant Array: [10, 30, 40, 50]
+3)
+  import java.util.Arrays;
+
+public class InsertInMiddle {
+
+    public static int[] insertInMiddle(int[] arr, int x) {
+        int n = arr.length;
+        int mid = n / 2;  
+        int[] newArr = new int[n + 1];
+
+        
+        for (int i = 0; i < mid; i++) {
+            newArr[i] = arr[i];
+        }
+
+       
+        newArr[mid] = x;
+
+        
+        for (int i = mid; i < n; i++) {
+            newArr[i + 1] = arr[i];
+        }
+
+        return newArr;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4};
+        int x = 99;
+
+        int[] result = insertInMiddle(arr, x);
+
+        System.out.println("New Array: " + Arrays.toString(result));
+    }
+}
+Output:
+
+New Array: [1, 2, 99, 3, 4]
+4)
+  import java.util.Arrays;
+
+public class PushZerosToStart {
+
+    public static void pushZerosToStart(int[] arr) {
+        int n = arr.length;
+        int[] result = new int[n];
+        int index = n - 1;  
+
+       
+        for (int i = n - 1; i >= 0; i--) {
+            if (arr[i] != 0) {
+                result[index] = arr[i];
+                index--;
+            }
+        }
+
+        
+        System.out.println("Result Array: " + Arrays.toString(result));
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 0, 2, 0, 3, 4, 0};
+
+        pushZerosToStart(arr);
+    }
+}
+output:
+
+Result Array: [0, 0, 0, 1, 2, 3, 4]
+5)
+  
+  
