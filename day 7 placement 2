@@ -1,0 +1,123 @@
+EVENMAX  AND ODDMAX:
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        sc.nextLine(); 
+        String input = sc.nextLine();
+        input = input.replaceAll("\\[|\\]|\\s", ""); 
+        String[] numbers = input.split(",");
+        int evenmax = Integer.MIN_VALUE;
+        int oddmax = Integer.MIN_VALUE;
+        for(int i = 0; i < size; i++) {
+            int num = Integer.parseInt(numbers[i]);
+            if(num % 2 == 0) {
+                if(num > evenmax) {
+                    evenmax = num;
+                }
+            } else {
+                if(num > oddmax) {
+                    oddmax = num;
+                }
+            }
+        }
+        System.out.println("EvenMax: " + evenmax);
+        System.out.println("OddMax: " + oddmax);
+    }
+}
+OUTPUT:
+6            
+[4,56,7,23,1,9,89]
+EvenMax: 56
+OddMax: 23
+
+WITH ARGUMENTS AND WITHOUT RETURN TYPE: 
+import java.util.*;
+public class Main {
+    public void prime(int a) {
+        int count = 0;
+        for (int i = 1; i <= a; i++) {
+            if (a % i == 0) {   
+                count++;
+        }
+    }    
+        if (count == 2) {
+         System.out.println(true); 
+        } 
+        else {
+    System.out.println(false);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int num1 = sc.nextInt();
+        Main m = new Main();
+        m.prime(num);
+        m.prime(num1);
+    }
+}
+
+OUTPUT:
+12
+17
+false
+true
+
+METHODS WITHOUT ARGUMENTS AND WITH RETURN TYPE:
+import java.util.*;
+public class Main {
+      public static boolean prime(int a){
+        int count=0;
+        for(int i=1;i<a;i++){
+          if(a%i==0){
+            count++;
+          }
+        }
+        if(count==2){
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+      public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int num1 = sc.nextInt();
+        System.out.println(prime(num));
+        System.out.println(prime(num1));
+      }
+}
+
+OUTPUT:
+15
+23
+false
+false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
