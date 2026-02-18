@@ -1,1 +1,384 @@
+NORMAL DATA STRUCTIRE CONDITION IN SEPERATE VALUES GIVEN:
+class Node{
+    int data;
+    Node next;
+}
+public class Main
+{
+    public static void main(String[] args) {
+        Node n1 = new Node();
+        n1.data = 10;
+        Node n2 = new Node();
+        n2.data = 20;
+        n1.next = n2;
+        Node n3 = new Node();
+        n3.data = 30;
+        n2.next = n3;
+        System.out.println(n1.data+" "+n2.data+" "+n3.data);
+        System.out.println(n1.data+" "+n1.next.data+" "+n1.next.next.data);
+    }
+}
 
+OUTPUT:
+10
+20
+30
+
+SINGLY LINKED LIST ADD METHOD:
+  class Node{
+    int data;
+    Node next;
+    Node(int d){
+        data=d;
+        next=null;
+    }
+}
+class singlylinkedlist{
+    Node head=null;
+    Node tail=null;
+    void add(int data){
+        Node newnode = new Node(data);
+        if(head==null){
+            head=tail=newnode;
+        }
+        else{
+            tail.next=newnode;
+            tail=newnode;
+        }
+    }
+    void display(){
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp = temp.next;
+        }
+    }
+}
+public class Main
+{
+    public static void main(String[] args) {
+        singlylinkedlist s = new singlylinkedlist();
+        s.add(100);
+        s.display();
+        s.add(200);
+        s.display();
+        s.add(300);
+        s.display();
+    }
+}
+
+OUTPUT:
+100 100 200 100 200 300
+
+SINGLY LINKED LIST ADDBEG METHOD:
+class Node {
+	int data;
+	Node next;
+	Node(int d) {
+		data=d;
+		next=null;
+	}
+}
+class singlylinkedlist {
+	int size=0;
+	Node head=null;
+	Node tail=null;
+	void add(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			tail.next=newnode;
+			tail=newnode;
+		}
+	}
+
+	void addatbeg(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			newnode.next=head;
+			head=newnode;
+		}
+	}
+
+	void addatpos(int data,int pos) {
+		if(pos<=0 || pos>size+1) {
+			System.out.println("please enter a valid pos");
+			return;
+		}
+		if(pos==1) {
+			addatbeg(data);
+			return;
+		}
+		if(pos==size+1) {
+			add(data);
+			return;
+		}
+		Node newnode = new Node(data);
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			Node temp=head;
+			for(int i=1; i<pos-1; i++) {
+				temp=temp.next;
+			}
+			newnode.next=temp.next;
+			temp.next=newnode;
+			size++;
+
+		}
+	}
+	
+	
+	
+	void display() {
+		Node temp = head;
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp = temp.next;
+		}
+		System.out.println();
+	}
+}
+public class Main
+{
+	public static void main(String[] args) {
+		singlylinkedlist s  = new singlylinkedlist();
+		s.add(100);
+		s.add(200);
+		s.add(300);
+		s.addatbeg(400);
+		s.display();
+		s.addatpos(500,3);
+		s.display();
+		s.addatpos(600,1);
+		s.display();
+		s.addatpos(700,2);
+		s.display();
+		System.out.println(s.size);
+
+	}
+}
+
+OUTPUT:
+400 100 200 300 
+400 100 500 200 300 
+600 400 100 500 200 300 
+600 700 400 100 500 200 300
+7
+
+ADD AND  DISPLAY:
+import java.util.*;
+class Node {
+	int data;
+	Node next;
+	Node(int d) {
+		data=d;
+		next=null;
+	}
+}
+class singlylinkedlist {
+	int size=0;
+	Node head=null;
+	Node tail=null;
+	void add(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			tail.next=newnode;
+			tail=newnode;
+		}
+	}
+
+	void addatbeg(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			newnode.next=head;
+			head=newnode;
+		}
+	}
+
+	void addatpos(int data,int pos) {
+		if(pos<=0 || pos>size+1) {
+			System.out.println("please enter a valid pos");
+			return;
+		}
+		if(pos==1) {
+			addatbeg(data);
+			return;
+		}
+		if(pos==size+1) {
+			add(data);
+			return;
+		}
+		Node newnode = new Node(data);
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			Node temp=head;
+			for(int i=1; i<pos-1; i++) {
+				temp=temp.next;
+			}
+			newnode.next=temp.next;
+			temp.next=newnode;
+			size++;
+
+		}
+	}
+	
+	
+	
+	void display() {
+		Node temp = head;
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp = temp.next;
+		}
+		System.out.println();
+	}
+}
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+		singlylinkedlist s  = new singlylinkedlist();
+		boolean a= true;
+	
+	    while(a){
+	   System.out.println("Enter 1- beg , 2-at pos 3-last 4-display 0-exit");
+	        int val = sc.nextInt();
+	        switch(val){
+	            case 0 :
+	                a=false;
+	                break;
+	            case 1:
+	                s.addatbeg(sc.nextInt());
+	                break;
+	           case 2:
+	               System.out.println("Enter data,position");
+	               s.addatpos(sc.nextInt(),sc.nextInt());
+	               break;
+	           case 3 :
+	               s.add(sc.nextInt());
+	               break;
+	           default:
+	           s.display();
+	        }     
+	    }
+
+	}
+}
+
+OUTPUT:
+Enter 1- beg , 2-at pos 3-last 4-display 0-exit
+1
+1
+Enter 1- beg , 2-at pos 3-last 4-display 0-exit
+1
+2
+Enter 1- beg , 2-at pos 3-last 4-display 0-exit
+1
+5
+Enter 1- beg , 2-at pos 3-last 4-display 0-exit
+1
+6
+Enter 1- beg , 2-at pos 3-last 4-display 0-exit
+4
+6 5 2 1 
+Enter 1- beg , 2-at pos 3-last 4-display 0-exit
+2
+Enter data,position
+3
+45
+please enter a valid pos
+Enter 1- beg , 2-at pos 3-last 4-display 0-exit
+4
+6 5 2 1 
+Enter 1- beg , 2-at pos 3-last 4-display 0-exit
+0
+
+DELETEATLAST:
+import java.util.*;
+class Node {
+	int data;
+	Node next;
+	Node(int d) {
+		data=d;
+		next=null;
+	}
+}
+class singlylinkedlist {
+	int size=0;
+	Node head=null;
+	Node tail=null;
+	void add(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			tail.next=newnode;
+			tail=newnode;
+		}
+	}
+	
+	void deleteatlast(){
+	    if(head==null){
+	        System.out.println("No element to delete");
+	        return;
+	    }
+	    Node temp=head;
+	    while(temp.next!=tail){
+	        temp=temp.next;
+	    }
+	    tail=temp;
+	    tail.next=null;
+	    
+	}
+		void display() {
+		Node temp = head;
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp = temp.next;
+		}
+		System.out.println();
+	}
+}
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+		singlylinkedlist s  = new singlylinkedlist();
+		s.add(10);
+		s.add(20);
+		s.add(30);
+		s.add(40);
+		s.display();
+		s.deleteatlast();
+		s.display();
+		s.deleteatlast();
+		s.display();
+		
+	}
+}
+
+OUTPUT:
+10 20 30 40 
+10 20 30 
+10 20
