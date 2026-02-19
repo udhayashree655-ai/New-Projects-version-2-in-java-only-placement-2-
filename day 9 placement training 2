@@ -1,1 +1,649 @@
+import java.util.*;
+class Node {
+	int data;
+	Node prev;
+	Node next;
+	Node(int data) {
+		this.data = data;
+		prev=null;
+		next=null;
+	}
 
+}
+
+class Doublylinkedlist {
+	Node head=null;
+	Node tail=null;
+	int size=0;
+
+	void addatlast(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			newnode.prev=tail;
+			tail.next=newnode;
+			tail=newnode;
+		}
+
+	}
+
+	void deleteatlast() {
+		if(head==null) {
+			System.out.println("There is no element to delete");
+			return;
+		}
+
+		if(head==tail) {
+			head=tail=null;
+			System.out.println("All data deleted");
+		}
+		else {
+			tail=tail.prev;
+			tail.next=null;
+		}
+		size--;
+	}
+	void display() {
+		Node temp = head;
+		if(head==null) {
+			System.out.println("There is no element to print");
+			return;
+		}
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp=temp.next;
+		}
+		System.out.println();
+
+	}
+}
+public class Main {
+	public static void main(String[] args) {
+		Doublylinkedlist d = new Doublylinkedlist();
+		d.addatlast(30);
+		d.addatlast(40);
+		d.display();
+		d.deleteatlast();
+		d.display();
+		d.deleteatlast();
+		d.display();
+	}
+}
+output:
+30 40 
+30 
+All data deleted
+There is no element to print
+  2)
+  void deleteatbeg(){
+  if(head==null) {
+    System.out.println("There is no element to delete");
+      return;
+  }
+  if(head==tail) {
+    head=tail=null;
+    System.out.println("All data deleted");
+  }
+  else{
+    head=head.next;
+    head.prev=null;
+  }
+}
+3)
+  import java.util.*;
+class Node {
+	int data;
+	Node prev;
+	Node next;
+	Node(int data) {
+		this.data = data;
+		prev=null;
+		next=null;
+	}
+
+}
+
+class Doublylinkedlist {
+	Node head=null;
+	Node tail=null;
+	int size=0;
+
+	void addatlast(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			newnode.prev=tail;
+			tail.next=newnode;
+			tail=newnode;
+		}
+
+	}
+	
+		void deleteatlast() {
+		if(head==null) {
+			System.out.println("There is no element to delete");
+			return;
+		}
+
+		if(head==tail) {
+			head=tail=null;
+			System.out.println("All data deleted");
+		}
+		else {
+			tail=tail.prev;
+			tail.next=null;
+		}
+		size--;
+	}
+	
+	 void deleteatbeg(){
+        	if(head==null) {
+			System.out.println("There is no element to delete");
+			return;
+		}
+			if(head==tail) {
+			head=tail=null;
+			System.out.println("All data deleted");
+		}
+		else{
+		    head=head.next;
+		    head.prev=null;
+		}
+		size--;
+    }
+    
+	void deleteatpos(int pos){
+	    if(pos<=0 || pos>size){
+	        System.out.println("Invalid pos");
+	        return;
+	    }
+	    if(pos==1){
+	        deleteatbeg();
+	        return;
+	    }
+	    if(pos==size){
+	       deleteatlast();
+	        return;
+	    }
+	    Node temp=head;
+	    for(int i=1;i<pos-1;i++){
+	        temp=temp.next;
+	    }
+	    Node temp1=temp.next;
+	    temp.next=temp1.next;
+	    temp.next.prev=temp;
+	    size--;
+	}
+
+   
+
+	void display() {
+		Node temp = head;
+		if(head==null) {
+			System.out.println("There is no element to print");
+			return;
+		}
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp=temp.next;
+		}
+		System.out.println();
+
+	}
+}
+public class Main {
+	public static void main(String[] args) {
+		Doublylinkedlist d = new Doublylinkedlist();
+		d.addatlast(10);
+		d.addatlast(20);
+		d.addatlast(30);
+		d.addatlast(40);
+		d.display();
+		d.deleteatpos(3);
+		d.deleteatpos(2);
+		d.display();
+	}
+}
+output:
+0 20 30 40 
+10 40
+  4)
+  void search(int d) {
+    if(head==null) {
+        System.out.println("There is no data to search");
+        return;
+    }
+    Node temp=head;
+    while(temp!=null){
+        if(temp.data==d){
+            System.out.println("Data found");
+            return;
+        }
+        temp=temp.next;
+    }
+    System.out.println("There is no data");
+     }
+}
+5)
+  import java.util.*;
+class Node {
+	int data;
+	Node prev;
+	Node next;
+	Node(int data) {
+		this.data = data;
+		prev=null;
+		next=null;
+	}
+}
+
+class Doublylinkedlist {
+	Node head=null;
+	Node tail=null;
+	int size=0;
+
+	void addatlast(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+		}
+		else {
+			newnode.prev=tail;
+			tail.next=newnode;
+			tail=newnode;
+		}
+
+	}
+
+	void search(int d) {
+		if(head==null) {
+			System.out.println("There is no data to search");
+			return;
+		}
+		Node temp=head;
+		while(temp!=null) {
+			if(temp.data==d) {
+				System.out.println("Data found");
+				return;
+			}
+			temp=temp.next;
+		}
+		System.out.println("There is no data");
+	}
+	void updation(int pos,int d) {
+		if(pos<=0 || pos>size) {
+			System.out.println("Invalid pos");
+			return;
+		}
+		if(pos==1) {
+			head.data=d;
+			return;
+		}
+		if(pos==size) {
+			tail.data=d;
+			return;
+		}
+		Node temp = head;
+		for(int i=1; i<pos; i++) {
+			temp=temp.next;
+		}
+		temp.data=d;
+
+	}
+	
+		void display() {
+		Node temp = head;
+		if(head==null) {
+			System.out.println("There is no element to print");
+			return;
+		}
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp=temp.next;
+		}
+		System.out.println();
+
+	}
+}
+public class Main {
+	public static void main(String[] args) {
+		Doublylinkedlist d = new Doublylinkedlist();
+		d.addatlast(10);
+		d.addatlast(20);
+		d.addatlast(30);
+		d.addatlast(40);
+// 		d.search(90);
+		d.updation(2,200);
+		d.display();
+	}
+}
+output:
+10 200 30 40 
+  6)
+  import java.util.*;
+class Node {
+	int data;
+	Node next;
+	Node(int data) {
+		this.data = data;
+		next = null;
+	}
+}
+
+class Circularsinglylinkedlist {
+	Node head = null;
+	Node tail = null;
+	int size = 0;
+
+	void addatlast(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if (head == null) {
+			head = tail = newnode;
+			tail.next = head;
+		} else {
+			tail.next = newnode;
+			tail = newnode;
+			tail.next = head;
+		}
+	}
+
+	void addatbeg(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if (head == null) {
+			head = tail = newnode;
+			tail.next = head;
+		} else {
+			newnode.next = head;
+			head = newnode;
+			tail.next = head;   
+		}
+	}
+
+	void display() {
+		if (head == null) {
+			System.out.println("There is no element to print");
+			return;
+		}
+		Node temp = head;
+		do {
+			System.out.print(temp.data + " ");
+			temp = temp.next;
+		} while (temp != head);
+		System.out.println();
+	}
+}
+
+public class Main {
+	public static void main(String[] args) {
+		Circularsinglylinkedlist c = new Circularsinglylinkedlist();
+		c.addatlast(10);
+		c.addatlast(20);
+		c.addatlast(30);
+		c.addatbeg(40);
+		c.display();
+	}
+}
+
+
+output:
+40 10 20 30 
+  7)
+  void deletelast(){
+    if(head==null){
+        System.out.println("no element to delete");
+        return;
+    }
+    if(head==tail){
+        head=tail=null;
+        System.out.println("All element are deleted");
+        return;
+    }
+    Node temp = head;
+    while(temp.next!=tail){
+        temp=temp.next;
+    }
+    tail=temp;
+    tail.next=head;
+    size--;
+}
+8)
+  import java.util.*;
+class Node {
+	int data;
+	Node prev;
+	Node next;
+	Node(int data) {
+		this.data = data;
+		prev=next=null;
+	}
+}
+
+class CircularDoublylinkedlist {
+	Node head = null;
+	Node tail = null;
+	int size=0;
+
+	void addatlast(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+			head.prev=tail;
+			tail.next=head;
+		}
+		else {
+			newnode.prev=tail;
+			tail.next=newnode;
+			tail=newnode;
+			head.prev=tail;
+			tail.next=head;
+		}
+	}
+
+	void addatbeg(int data) {
+		Node newnode = new Node(data);
+		size++;
+		if(head==null) {
+			head=tail=newnode;
+			head.prev=tail;
+			tail.next=head;
+		}
+		else{
+		    head.prev=newnode;
+		    newnode.next=head;
+		    head=newnode;
+		    head.prev=tail;
+		    tail.next=head;
+		}
+	}
+
+	void display() {
+		if(head==null) {
+			System.out.println("There is no element to print");
+			return;
+		}
+		Node temp = tail;
+		do {
+			System.out.print(temp.data+" ");
+			temp=temp.prev;
+		} while(temp!=tail);
+		System.out.println();
+	}
+
+}
+public class Main {
+	public static void main(String[] args) {
+		CircularDoublylinkedlist c = new CircularDoublylinkedlist();
+		c.addatlast(10);
+		c.addatlast(20);
+		c.addatlast(30);
+		c.addatbeg(50);
+		c.display();
+	}
+}
+output:
+30 20 10 50 
+  9)stack
+  import java.util.*;
+
+class Node {
+    int data;
+    Node next;
+    Node(int data) {
+        this.data = data;
+        next = null;
+    }
+}
+
+class Circularsinglylinkedlist {
+    Node head = null;
+    Node tail = null;
+    int size = 0;
+
+    void addatlast(int data) {
+        Node newnode = new Node(data);
+        size++;
+        if (head == null) {
+            head = tail = newnode;
+            tail.next = head;
+        } else {
+            tail.next = newnode;
+            tail = newnode;
+            tail.next = head;
+        }
+    }
+
+    void addatbeg(int data) {
+        Node newnode = new Node(data);
+        size++;
+        if (head == null) {
+            head = tail = newnode;
+            tail.next = head;
+        } else {
+            newnode.next = head;
+            head = newnode;
+            tail.next = head;   
+        }
+    }
+
+    // Stack-like push (same as addatbeg)
+    void push(int data) {
+        addatbeg(data);
+    }
+
+    // Stack-like peek (look at top element)
+    void peek() {
+        if (head == null) {
+            System.out.println("There is no element to peek");
+            return;
+        }
+        System.out.println("Peek element: " + head.data);
+    }
+
+    void display() {
+        if (head == null) {
+            System.out.println("There is no element to print");
+            return;
+        }
+        Node temp = head;
+        do {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        } while (temp != head);
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circularsinglylinkedlist c = new Circularsinglylinkedlist();
+        c.push(10);
+        c.push(20);
+        c.push(30);
+        c.display();   // Shows stack contents
+        c.peek();      // Shows top element
+    }
+}
+
+output:
+30 20 10 
+Peek element: 30
+  10)
+  import java.util.*;
+
+class StackArray {
+    int size;
+    int top;
+    int arr[];
+
+    StackArray(int size) {
+        this.size = size;
+        arr = new int[size];
+        top = -1;
+    }
+
+    void push(int data) {
+        if (top == size - 1) {
+            System.out.println("Stack Overflow");
+            return;
+        }
+        arr[++top] = data;
+        System.out.println(data + " pushed");
+    }
+
+    void pop() {
+        if (top == -1) {
+            System.out.println("Stack Underflow");
+            return;
+        }
+        System.out.println(arr[top--] + " popped");
+    }
+
+    void peek() {
+        if (top == -1) {
+            System.out.println("Stack is empty");
+            return;
+        }
+        System.out.println("Peek element: " + arr[top]);
+    }
+
+    void display() {
+        if (top == -1) {
+            System.out.println("Stack is empty");
+            return;
+        }
+        System.out.print("Stack elements: ");
+        for (int i = 0; i <= top; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        StackArray s = new StackArray(5);
+        s.push(10);
+        s.push(20);
+        s.push(30);
+        s.display();
+        s.peek();
+        s.pop();
+        s.display();
+    }
+}
+output:
+
+Stack elements: 10 20 30 
+Peek element: 30
+30 popped
+Stack elements: 10 20
